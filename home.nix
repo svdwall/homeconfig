@@ -1,10 +1,12 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./home.nix ./zsh.nix ];
+  imports = [ ./zsh.nix ];
   
   home.stateVersion = "22.05";
 
+  home.username = "soren";
+  home.homeDirectory = "/Users/soren";
 
   home.packages = with pkgs; [ 
     nerdfonts 
