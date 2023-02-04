@@ -14,9 +14,12 @@
     subversion
     vscodium
 
+    fzf
+
     # TeX
     mytexlive
     (callPackage ./scripts.nix {})
+
     # C++
     ccls
   ];

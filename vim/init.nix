@@ -8,6 +8,9 @@
       ''
         lua <<EOF
         ${lib.strings.fileContents ./lsp.lua}
+        vim.api.nvim_set_keymap('n', '<c-f>',
+          "<cmd>lua require('fzf-lua').files()<CR>",
+          { noremap = true, silent = true })
         EOF
       ''
     ];
@@ -20,6 +23,8 @@
       vim-airline
       vim-airline-themes
 
+      # File organization
+      fzf-lua
       nerdtree
 
       # Langs
