@@ -9,12 +9,18 @@
   home.homeDirectory = "/Users/soren";
 
   home.packages = with pkgs; [ 
-    nerdfonts 
+    # font 
+    (nerdfonts.override { 
+      fonts = [ "Meslo" ];
+    })
 
     subversion
     vscodium
 
+    # fzf and related
     fzf
+    fd
+    ripgrep
 
     # TeX
     mytexlive

@@ -7,19 +7,18 @@
       (lib.strings.fileContents ./extraConfig.vim)
       ''
         lua <<EOF
-        ${lib.strings.fileContents ./lsp.lua}
-        vim.api.nvim_set_keymap('n', '<c-f>',
-          "<cmd>lua require('fzf-lua').files()<CR>",
-          { noremap = true, silent = true })
+        ${lib.strings.fileContents ./fzf.lua}
         EOF
       ''
     ];
 
+        #${lib.strings.fileContents ./lsp.lua}
     plugins = with pkgs.vimPlugins; [
-      vim-nix
+      # Colorscheme and icons
       gruvbox
+      nvim-web-devicons
 
-      # AIRLINE
+      # airline
       vim-airline
       vim-airline-themes
 
@@ -27,10 +26,17 @@
       fzf-lua
       nerdtree
 
-      # Langs
+      # Autocomplete
+      coq_nvim
+
+      # LSP
       lsp-colors-nvim
       nvim-lspconfig
-      
+
+      ## Langs
+      # Nix
+      vim-nix
+
       # C++
       vim-ccls
     ];

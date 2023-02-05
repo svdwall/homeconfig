@@ -1,15 +1,10 @@
--- TODO use nvim tree
---
--- for nvim tree
---require'nvim-web-devicons'.setup{default = true;}
-
 -- lspconfig
 -- updates while typing
---vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
---  vim.lsp.diagnostic.on_publish_diagnostics, {
---    update_in_insert = true,
---  }
---)
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    update_in_insert = true,
+  }
+)
 
 local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)

@@ -1,8 +1,5 @@
 {
   packageOverrides = pkgs: rec {
-    nerdfonts = pkgs.nerdfonts.override { 
-      fonts = [ "Meslo" ];
-    };
 
     postCombineOverride = oldAttrs: {
       postBuild = oldAttrs.postBuild + ''
