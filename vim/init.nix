@@ -8,11 +8,12 @@
       ''
         lua <<EOF
         ${lib.strings.fileContents ./fzf.lua}
+        ${lib.strings.fileContents ./coq.lua}
+        ${lib.strings.fileContents ./lsp.lua}
         EOF
       ''
     ];
 
-        #${lib.strings.fileContents ./lsp.lua}
     plugins = with pkgs.vimPlugins; [
       # Colorscheme and icons
       gruvbox
@@ -28,6 +29,7 @@
 
       # Autocomplete
       coq_nvim
+      coq-artifacts
 
       # LSP
       lsp-colors-nvim
