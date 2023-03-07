@@ -23,6 +23,11 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Utility
+inoremap kj <ESC>
+inoremap jk <ESC>
+
+
 " Open NERDTree
 nnoremap <C-m> :NERDTreeToggle<CR>
 " Open the existing NERDTree on each new tab.
