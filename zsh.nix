@@ -64,6 +64,16 @@
         };
         file = "formarks.plugin.zsh";
       }
+      {
+        name = "nix-zsh-completions";
+        src = fetchFromGitHub {
+          owner = "nix-community";
+          repo = "nix-zsh-completions";
+          rev = "6a1bfc024481bdba568f2ced65e02f3a359a7692";
+          sha256 = "aXetjkl5nPuYHHyuX59ywXF+4Xg+PUCV6Y2u+g18gEk=";
+        };
+        file = "nix-zsh-completions.plugin.zsh";
+      }
     ];
   };
 }

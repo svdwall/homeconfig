@@ -27,6 +27,9 @@ in {
     fd
     ripgrep
 
+    # nix tools
+    comma
+
     # TeX
     mytexlive
     scripts
