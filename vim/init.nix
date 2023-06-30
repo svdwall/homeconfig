@@ -25,7 +25,7 @@
 
       # File organization
       fzf-lua
-      nerdtree
+      #nerdtree
 
       # Autocomplete
       coq_nvim
@@ -41,6 +41,9 @@
 
       # C++
       vim-ccls
+
+      # Coq
+      Coqtail
     ];
   };
 }

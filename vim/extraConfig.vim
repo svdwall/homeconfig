@@ -26,7 +26,7 @@ nnoremap <C-H> <C-W><C-H>
 " Utility
 inoremap kj <ESC>
 inoremap jk <ESC>
-
+inoremap ;; ;<ESC>
 
 " Open NERDTree
 nnoremap <C-m> :NERDTreeToggle<CR>

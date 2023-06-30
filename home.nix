@@ -37,6 +37,7 @@ in {
 
     # LSPs 
     ccls
+    rust-analyzer
 
     # Other
     subversion

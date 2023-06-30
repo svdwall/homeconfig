@@ -41,17 +41,20 @@ local on_attach = function(client, bufnr)
 end
 
 local servers = {
-    "ccls"
+    "ccls", "rust_analyzer"
 }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup ( 
     require('coq').lsp_ensure_capabilities({
-      on_attach = on_attach,
-      client = {
-          snippetSupport = true
-        }
+      on_attach = on_attach
+--      client = {
+--          snippetSupport = true
+--        }
   }))
 end
+
+
+--nvim_lsp.rust_analyzer.setup({on_attach = on_attach })
 
 -- compe
 --vim.o.completeopt = "menuone,noselect"
