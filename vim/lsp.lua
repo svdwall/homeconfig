@@ -61,8 +61,8 @@ local setup_server = function(lsp, settings)
     }
     settings.capabilities = capabilities
     nvim_lsp[lsp].setup ( 
-    --coq.lsp_ensure_capabilities(settings) coq broken?
-    settings
+    coq.lsp_ensure_capabilities(settings)
+    -- settings
     )
 end
 setup_server("ccls", {})
