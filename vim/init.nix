@@ -10,6 +10,8 @@
         ${lib.strings.fileContents ./fzf.lua}
         ${lib.strings.fileContents ./coq.lua}
         ${lib.strings.fileContents ./lsp.lua}
+        ${lib.strings.fileContents ./ufo.lua}
+        ${lib.strings.fileContents ./rust-tools.lua}
         EOF
       ''
     ];
@@ -27,13 +29,20 @@
       fzf-lua
       #nerdtree
 
-      # Autocomplete
+      # Autocomplete deps installing somehow broken
       coq_nvim
       coq-artifacts
+
+      # Codefolding
+      nvim-ufo
+
+      # git
+      vim-fugitive
 
       # LSP
       lsp-colors-nvim
       nvim-lspconfig
+      rust-tools-nvim
 
       ## Langs
       # Nix

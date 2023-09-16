@@ -1,8 +1,9 @@
-" vim not vi!
+let mapleader = "\<Space>"
+
 set nocompatible
 
+" theme
 colorscheme gruvbox
-
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 
@@ -13,9 +14,6 @@ set cursorline
 
 " Expand tabs to 4 spaces
 set tabstop=4 shiftwidth=4 expandtab
-
-" Search path is full dir
-set path+=./**
 
 " Split movement
 nnoremap <C-J> <C-W><C-J>

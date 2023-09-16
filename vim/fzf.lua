@@ -1,5 +1,5 @@
 -- Keymaps
-vim.api.nvim_set_keymap('n', '<c-f>',
+vim.api.nvim_set_keymap('n', '<c-`>',
     "<cmd>lua require('fzf-lua').files()<CR>",
     { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<c-m>',

@@ -2,7 +2,7 @@
 
 with pkgs;
 let
-  mytexlive = callPackage ./mytexlive.nix {};
+  mytexlive = callPackage ./texlive.nix {};
   scripts = callPackage ./scripts.nix {};
   myriadpro = callPackage ./myriadpro.nix {};
   meslo = nerdfonts.override { fonts = [ "Meslo"]; };
