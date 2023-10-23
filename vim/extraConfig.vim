@@ -26,14 +26,4 @@ inoremap kj <ESC>
 inoremap jk <ESC>
 inoremap ;; ;<ESC>
 
-" Open NERDTree
-nnoremap <C-m> :NERDTreeToggle<CR>
-" Open the existing NERDTree on each new tab.
-" autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
-" Close if only NERDTree is left
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-
-
 

@@ -22,10 +22,11 @@ in {
     myriadpro
     jetbrains-mono
 
-    # fzf and related
+    # command line tools
     fzf
     fd
     ripgrep
+    tldr
 
     # nix tools
     comma
@@ -38,6 +39,9 @@ in {
     # LSPs 
     ccls
     rust-analyzer
+
+    # Display related
+    rectangle
 
     # Other
     subversion

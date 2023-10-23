@@ -27,9 +27,8 @@
 
       # File organization
       fzf-lua
-      #nerdtree
 
-      # Autocomplete deps installing somehow broken
+      # Autocompletion coq
       coq_nvim
       coq-artifacts
 
@@ -42,16 +41,11 @@
       # LSP
       lsp-colors-nvim
       nvim-lspconfig
+
+      # Language support
       rust-tools-nvim
-
-      ## Langs
-      # Nix
       vim-nix
-
-      # C++
       vim-ccls
-
-      # Coq
       Coqtail
     ];
   };
