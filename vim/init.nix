@@ -14,6 +14,7 @@
         ${lib.strings.fileContents ./rust-tools.lua}
         EOF
       ''
+      (lib.strings.fileContents ./vimtex.vim)
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -32,8 +33,9 @@
       coq_nvim
       coq-artifacts
 
-      # Codefolding
+      # Codefolding and related visuals
       nvim-ufo
+      indent-blankline-nvim
 
       # git
       vim-fugitive
@@ -47,6 +49,7 @@
       vim-nix
       vim-ccls
       Coqtail
+      vimtex
     ];
   };
 }

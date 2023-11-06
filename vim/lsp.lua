@@ -55,6 +55,7 @@ local servers = {
 local coq = require('coq')
 local setup_server = function(lsp, settings) 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
+    -- ufo wants this
     capabilities.textDocument.foldingRange = {
         dynamicRegistration = false,
         lineFoldingOnly = true
@@ -65,5 +66,33 @@ local setup_server = function(lsp, settings)
     -- settings
     )
 end
+
 setup_server("ccls", {})
+setup_server("texlab", {
+    texlab = {
+        auxDirectory = "out",
+        bibtexFormatter = "texlab",
+        build = {
+            args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+            executable = "latexmk",
+            forwardSearchAfter = true,
+            onSave = true 
+        },
+        chktex = {
+            onEdit = false,
+            onOpenAndSave = true
+        },
+        diagnosticsDelay = 300,
+        formatterLineLength = 80,
+        forwardSearch = {
+            executable = "displayline",
+            args = { "-r", "-b", "-g", "%l", "%p", "%f"}
+        },
+        latexFormatter = "latexindent",
+        latexindent = {
+            modifyLineBreaks = false
+        },
+        rootDirectory = "."
+    }
+})
 

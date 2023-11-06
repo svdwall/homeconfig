@@ -34,11 +34,12 @@ in {
     # TeX
     mytexlive
     scripts
-    texlab
-
+    neovim-remote # needed to find vim for reverse synctex
+ 
     # LSPs 
     ccls
     rust-analyzer
+    texlab
 
     # Display related
     rectangle
