@@ -7,7 +7,7 @@ let
   myriadpro = callPackage ./myriadpro.nix {};
   meslo = nerdfonts.override { fonts = [ "Meslo"]; };
 in {
-  imports = [ ./zsh.nix ./vim/init.nix ];
+  imports = [ ./zsh.nix ./neovim.nix ];
   
   home.stateVersion = "22.05";
 
@@ -40,6 +40,7 @@ in {
     ccls
     rust-analyzer
     texlab
+    coqPackages.coq-lsp
 
     # Display related
     rectangle

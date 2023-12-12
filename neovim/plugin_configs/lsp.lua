@@ -27,9 +27,9 @@ local def_keys = function(ev)
     buf_set_keymap('n', '<leader>rd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
     buf_set_keymap('n', '<leader>rh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
     buf_set_keymap('n', '<leader>rs', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    --buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-    --buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    --buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+    buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+    buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+    buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
     buf_set_keymap('n', '<leader>rk', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     buf_set_keymap('n', '<leader>rj', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     buf_set_keymap('n', '<leader>rl', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
@@ -37,9 +37,9 @@ local def_keys = function(ev)
     -- Set some keybinds conditional on server capabilities
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     if client.server_capabilities.document_formatting then
-        buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+        buf_set_keymap("n", "<leader>rf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     elseif client.server_capabilities.document_range_formatting then
-        buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+        buf_set_keymap("n", "<leader>rf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 end
 
@@ -62,37 +62,26 @@ local setup_server = function(lsp, settings)
     }
     settings.capabilities = capabilities
     nvim_lsp[lsp].setup ( 
-    coq.lsp_ensure_capabilities(settings)
-    -- settings
+        coq.lsp_ensure_capabilities(settings)
     )
 end
 
 setup_server("ccls", {})
 setup_server("texlab", {
     texlab = {
-        auxDirectory = "out",
         bibtexFormatter = "texlab",
-        build = {
-            args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
-            executable = "latexmk",
-            forwardSearchAfter = true,
-            onSave = true 
-        },
         chktex = {
             onEdit = false,
             onOpenAndSave = true
         },
         diagnosticsDelay = 300,
         formatterLineLength = 80,
-        forwardSearch = {
-            executable = "displayline",
-            args = { "-r", "-b", "-g", "%l", "%p", "%f"}
-        },
         latexFormatter = "latexindent",
         latexindent = {
             modifyLineBreaks = false
         },
         rootDirectory = "."
-    }
+    },
 })
+-- uncomment when new version of lspconfig comes: setup_server("coq-lsp", {})
 
