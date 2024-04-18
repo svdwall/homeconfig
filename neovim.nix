@@ -19,6 +19,8 @@ in
         lua <<EOF
         require('gitsigns').setup()
         require("nvim-surround").setup()
+        require("ibl").setup()
+        require("oil").setup()
         EOF
       ''
     ];
@@ -41,6 +43,7 @@ in
         type = "lua";
         config = builtins.readFile(./neovim/plugin_configs/fzf.lua);
       }
+      oil-nvim
 
       # Autocompletion coq
       {
@@ -72,6 +75,7 @@ in
         type = "lua";
         config = builtins.readFile(./neovim/plugin_configs/lsp.lua);
       }
+      trouble-nvim
 
       # Language support
       {

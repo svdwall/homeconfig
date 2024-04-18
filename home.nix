@@ -34,7 +34,6 @@ in {
     # TeX
     mytexlive
     scripts
-    neovim-remote # needed to find vim for reverse synctex
  
     # LSPs 
     ccls

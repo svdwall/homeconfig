@@ -20,3 +20,8 @@ vim.cmd([[
 highlight! link texCmd GruvboxFg2
 highlight! link texCmdEnv Statement 
 ]])
+
+-- use vimtex's conceal system
+vim.cmd([[
+set conceallevel=2
+]])
