@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 with pkgs;
 let
@@ -13,6 +13,29 @@ in {
 
   home.username = "soren";
   home.homeDirectory = "/Users/soren";
+
+  # Make physical copies of applications so that spotlight finds them (since it does not follow symlinks)
+  # https://github.com/nix-community/home-manager/issues/1341#issuecomment-778820334
+  home.activation = {
+    copyApplications = let
+      apps = pkgs.buildEnv {
+        name = "home-manager-applications";
+        paths = config.home.packages;
+        pathsToLink = "/Applications";
+      };
+    in lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      baseDir="$HOME/Applications/Home Manager Copied Apps"
+      if [ -d "$baseDir" ]; then
+        rm -rf "$baseDir"
+      fi
+      mkdir -p "$baseDir"
+      for appFile in ${apps}/Applications/*; do
+        target="$baseDir/$(basename "$appFile")"
+        $DRY_RUN_CMD cp ''${VERBOSE_ARG:+-v} -fHRL "$appFile" "$baseDir"
+        $DRY_RUN_CMD chmod ''${VERBOSE_ARG:+-v} -R +w "$target"
+      done
+    '';
+  };
 
   fonts.fontconfig.enable = true;
 
@@ -47,7 +70,12 @@ in {
     # Other
     subversion
     vscodium
-  ];
+  ]
+  ++ lib.optionals stdenv.isDarwin
+  [
+    iterm2
+  ]
+  ;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
