@@ -1,4 +1,4 @@
-{ stdenvNoCC, unzip, callPackage, texlive } :
+{ stdenvNoCC, unzip, callPackage, texlive, tubslatex, myriadpro } :
 let 
   postCombineOverride = oldAttrs: {
     postBuild = oldAttrs.postBuild + ''
@@ -6,13 +6,12 @@ let
       updmap --sys
     '';
   };
-  myriadpro = callPackage (import ./myriadpro.nix) {};
-  tubslatex.pkgs = [(callPackage (import ./tubslatex.nix) {})];  
   texfonts.pkgs = [ myriadpro ];
-in 
-  (texlive.combine {                                                                                                                                                          
+  tubslatexwrapper.pkgs = [ tubslatex ];
+in
+  (texlive.combine {
     inherit (texlive) scheme-full;
-    inherit tubslatex;
+    inherit tubslatexwrapper;
     inherit texfonts;
   }).overrideAttrs postCombineOverride
 

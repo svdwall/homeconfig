@@ -5,7 +5,7 @@
     enable = true;
     dotDir = ".config/zsh";
     autocd = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     enableCompletion = true;
 
     oh-my-zsh = {

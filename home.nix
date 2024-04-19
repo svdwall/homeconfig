@@ -4,15 +4,9 @@ with pkgs;
 let
   mytexlive = callPackage ./texlive.nix {};
   scripts = callPackage ./scripts.nix {};
-  myriadpro = callPackage ./myriadpro.nix {};
   meslo = nerdfonts.override { fonts = [ "Meslo"]; };
 in {
   imports = [ ./zsh.nix ./neovim.nix ];
-  
-  home.stateVersion = "22.05";
-
-  home.username = "soren";
-  home.homeDirectory = "/Users/soren";
 
   # Make physical copies of applications so that spotlight finds them (since it does not follow symlinks)
   # https://github.com/nix-community/home-manager/issues/1341#issuecomment-778820334
