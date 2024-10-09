@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs,  ... }:
 
 with pkgs;
 let
@@ -45,18 +45,24 @@ in {
     ripgrep
     tldr
 
+    # chattools
+    zulip-term
+
     # nix tools
     comma
 
     # TeX
     mytexlive
     scripts
- 
+    ghostscript
+
     # LSPs 
     ccls
     rust-analyzer
     texlab
     coqPackages.coq-lsp
+    ltex-ls
+    vscode-langservers-extracted
 
     # Display related
     rectangle

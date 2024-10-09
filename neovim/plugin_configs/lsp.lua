@@ -86,3 +86,6 @@ setup_server("texlab", {
 })
 -- uncomment when new version of lspconfig comes: setup_server("coq-lsp", {})
 
+setup_server("ltex", {})
+setup_server("html", {})
+

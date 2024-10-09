@@ -33,4 +33,6 @@ inoremap kj <ESC>
 inoremap jk <ESC>
 inoremap ;; ;<ESC>
 
+vnoremap <Leader>rr "hy:%s/<C-r>h//gc<left><left><left>
+
 

@@ -12,10 +12,11 @@
   };
 
   outputs = { self, nixpkgs, homeManager, flake-utils, home-sources }:
-  #flake-utils.lib.eachDefaultSystem (system:
   {
+    templates = import ./templates/default.nix;
+
     homeConfigurations."soren" = homeManager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs { system = "aarch64-darwin"; overlays = [ home-sources.overlay ]; };
+      pkgs = import nixpkgs { system = "aarch64-darwin"; overlays = [ home-sources.overlay ]; config.allowUnfree = true; config.allowUnfreePredicate = _ : true; };
 
       modules = [
         ./home.nix

@@ -76,13 +76,18 @@ in
         config = builtins.readFile(./neovim/plugin_configs/lsp.lua);
       }
       trouble-nvim
+      {
+        plugin = actions-preview-nvim;
+        type = "lua";
+        config = ''require("actions-preview").setup {}'';
+      }
 
       # Language support
       {
         plugin = rust-tools-nvim;
         type = "lua";
         config = builtins.readFile(./neovim/plugin_configs/rust-tools.lua);
-      }     
+      }
       vim-nix
       vim-ccls
       Coqtail
