@@ -63,6 +63,7 @@ in {
     coqPackages.coq-lsp
     ltex-ls
     vscode-langservers-extracted
+    pyright
 
     # Display related
     rectangle

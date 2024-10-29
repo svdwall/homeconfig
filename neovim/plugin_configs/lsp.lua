@@ -88,4 +88,4 @@ setup_server("texlab", {
 
 setup_server("ltex", {})
 setup_server("html", {})
-
+setup_server("pyright", {})
