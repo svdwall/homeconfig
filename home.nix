@@ -45,6 +45,9 @@ in {
     ripgrep
     tldr
 
+    # versioning
+    git
+
     # chattools
     zulip-term
 
