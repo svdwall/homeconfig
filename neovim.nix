@@ -63,6 +63,7 @@ in
 
       # editing
       nvim-surround
+      vim-commentary
 
       # git
       vim-fugitive

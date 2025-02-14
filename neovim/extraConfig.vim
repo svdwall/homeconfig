@@ -33,6 +33,7 @@ inoremap kj <ESC>
 inoremap jk <ESC>
 inoremap ;; ;<ESC>
 
-vnoremap <Leader>rr "hy:%s/<C-r>h//gc<left><left><left>
-
-
+aug QFClose
+  au!
+  au WinEnter * if winnr('$') == 1 && &buftype == "quickfix"|q|endif
+aug END
