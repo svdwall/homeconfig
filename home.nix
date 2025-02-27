@@ -34,6 +34,10 @@ in {
   fonts.fontconfig.enable = true;
 
   home.packages = [ 
+    # nix + nix tools
+    config.nix.package
+    comma
+
     # fonts
     meslo
     myriadpro
@@ -50,9 +54,6 @@ in {
 
     # chattools
     zulip-term
-
-    # nix tools
-    comma
 
     # TeX
     mytexlive
