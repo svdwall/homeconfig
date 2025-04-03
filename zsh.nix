@@ -27,9 +27,7 @@
       AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
     '';
 
-    # Load nix
     envExtra = ''
-
       export PATH=/Applications/Skim.app/Contents/SharedSupport/:$PATH
     '';
 
@@ -45,12 +43,22 @@
         file = "agkozak-zsh-prompt.plugin.zsh";
       }
       {
+        name = "catppuccin-zsh-syntax-highlighting";
+        src = fetchFromGitHub {
+          owner = "catppuccin";
+          repo = "zsh-syntax-highlighting";
+          rev = "7926c3d3e17d26b3779851a2255b95ee650bd928";
+          sha256 = "l6tztApzYpQ2/CiKuLBf8vI2imM6vPJuFdNDSEi7T/o=";
+        };
+        file = "themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh";
+      }
+      {
         name = "zsh-syntax-highlighting";
         src = fetchFromGitHub {
           owner = "zsh-users";
           repo = "zsh-syntax-highlighting";
-          rev = "0.6.0";
-          sha256 = "0zmq66dzasmr5pwribyh4kbkk23jxbpdw4rjxx0i7dx8jjp2lzl4";
+          rev = "0.8.0";
+          sha256 = "iJdWopZwHpSyYl5/FQXEW7gl/SrKaYDEtTH9cGP7iPo=";
         };
         file = "zsh-syntax-highlighting.zsh";
       }

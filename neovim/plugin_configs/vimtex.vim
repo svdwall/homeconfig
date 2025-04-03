@@ -1,4 +1,5 @@
-let g:vimtex_view_method = 'skim'
+let g:vimtex_view_method = 'sioyek'
+let g:vimtex_callback_progpath = 'nvim'
 
 let g:vimtex_view_skim_sync = 1
 let g:vimtex_view_skim_reading_bar = 1

@@ -31,6 +31,7 @@ in
 
       # Colorscheme and icons
       gruvbox
+      # catppuccin-nvim
       nvim-web-devicons
 
       # airline

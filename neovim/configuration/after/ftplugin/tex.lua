@@ -17,8 +17,8 @@ require("nvim-surround").buffer_setup {
 
 -- Dont have red everywhere in tex code
 vim.cmd([[
-highlight! link texCmd GruvboxFg2
-highlight! link texCmdEnv Statement 
+    highlight! link texCmd GruvboxFg2
+    highlight! link texCmdEnv Statement 
 ]])
 
 -- use vimtex's conceal system

@@ -59,6 +59,7 @@ in {
     mytexlive
     scripts
     ghostscript
+    sioyek
 
     # LSPs 
     ccls

@@ -7,7 +7,7 @@ set spell spelllang=en_us
 
 " theme
 colorscheme gruvbox
-let g:airline_theme='gruvbox'
+let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
 
 " linenumbers, line highlight, and scrolloff
