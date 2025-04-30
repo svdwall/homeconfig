@@ -52,8 +52,9 @@ in {
     # versioning
     git
 
-    # chattools
+    # communication
     zulip-term
+    teams
 
     # TeX
     mytexlive

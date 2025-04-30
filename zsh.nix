@@ -1,12 +1,20 @@
 { config, lib, pkgs, ... }:
 
+let dotdir = ".config/zsh"; in
 {
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
+    dotDir = dotdir;
     autocd = true;
     autosuggestion.enable = true;
     enableCompletion = true;
+    history = {
+      ignoreAllDups = true;
+      save = 10000;
+      size = 10000;
+      path = dotdir + "/history";
+      append = true;
+    };
 
     oh-my-zsh = {
       enable = true;
