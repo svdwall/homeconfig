@@ -1,20 +1,19 @@
 { config, lib, pkgs, ... }:
 
-let dotdir = ".config/zsh"; in
 {
   programs.zsh = {
     enable = true;
-    dotDir = dotdir;
     autocd = true;
     autosuggestion.enable = true;
     enableCompletion = true;
     history = {
+      path = "${config.xdg.dataHome}/zsh/history";
       ignoreAllDups = true;
       save = 10000;
       size = 10000;
-      path = dotdir + "/history";
       append = true;
     };
+
 
     oh-my-zsh = {
       enable = true;
@@ -33,6 +32,9 @@ let dotdir = ".config/zsh"; in
       AGKOZAK_CUSTOM_SYMBOLS=( '⇣⇡' '⇣' '⇡' '+' 'x' '!' '>' '?' )
       AGKOZAK_MULTILINE=0
       AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
+
+      setopt SHARE_HISTORY
+      setopt HIST_FIND_NO_DUPS
     '';
 
     envExtra = ''

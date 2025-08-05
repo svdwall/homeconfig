@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Needs the local sources that I cannot put on github.
-    home-sources.url = "flake:home-sources";
+    home-sources.url = "git+file:/Users/soren/.config/home-config-sources?rev=b28a3e3a1308f523fad85b82aaac266c8e9332f5";
   };
 
   outputs = { self, nixpkgs, homeManager, flake-utils, home-sources }:
@@ -35,6 +35,7 @@
         {
           nix.registry.nixpkgs.flake = nixpkgs;
           nix.registry.own.flake = self;
+          nix.settings.experimental-features = [ "nix-command" "flakes" ];
           home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}";
           nix.package = pkgs.nix;
         }

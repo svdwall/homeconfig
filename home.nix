@@ -54,7 +54,8 @@ in {
 
     # communication
     zulip-term
-    teams
+    # built is broken somehow
+    # teams
 
     # TeX
     mytexlive

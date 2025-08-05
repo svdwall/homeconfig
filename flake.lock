@@ -40,14 +40,18 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1713528509,
-        "narHash": "sha256-NEO43DMJGOdcvqkXmK7UemmzYUtIaud3jTkUb+y/JP4=",
-        "path": "/Users/soren/.config/home-config-sources",
-        "type": "path"
+        "lastModified": 1754383950,
+        "narHash": "sha256-bLQD+LucaoiQZRNyU+YugMu+kzQu6xADMNlnJAjpSCM=",
+        "ref": "refs/heads/main",
+        "rev": "b28a3e3a1308f523fad85b82aaac266c8e9332f5",
+        "revCount": 4,
+        "type": "git",
+        "url": "file:/Users/soren/.config/home-config-sources"
       },
       "original": {
-        "id": "home-sources",
-        "type": "indirect"
+        "rev": "b28a3e3a1308f523fad85b82aaac266c8e9332f5",
+        "type": "git",
+        "url": "file:/Users/soren/.config/home-config-sources"
       }
     },
     "homeManager": {
@@ -57,11 +61,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1739757849,
-        "narHash": "sha256-Gs076ot1YuAAsYVcyidLKUMIc4ooOaRGO0PqTY7sBzA=",
+        "lastModified": 1747688870,
+        "narHash": "sha256-ypL9WAZfmJr5V70jEVzqGjjQzF0uCkz+AFQF7n9NmNc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9d3d080aec2a35e05a15cedd281c2384767c2cfe",
+        "rev": "d5f1f641b289553927b3801580598d200a501863",
         "type": "github"
       },
       "original": {
@@ -87,11 +91,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1740559594,
-        "narHash": "sha256-r1/RAgr7x68leV/R8gaR1AA6b5dmimxxdN1DRkDn3pg=",
+        "lastModified": 1751290243,
+        "narHash": "sha256-kNf+obkpJZWar7HZymXZbW+Rlk3HTEIMlpc6FCNz0Ds=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2f137a92a87d2e03e75fce3c9c9073095720369b",
+        "rev": "5ab036a8d97cb9476fbe81b09076e6e91d15e1b6",
         "type": "github"
       },
       "original": {
