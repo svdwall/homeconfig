@@ -13,40 +13,35 @@ in
   programs.neovim = {
     enable = true;
     vimAlias = true;
-    extraConfig = builtins.concatStringsSep "\n" [
-      (lib.strings.fileContents ./neovim/extraConfig.vim)
-      ''
-        lua <<EOF
-        require('gitsigns').setup()
-        require("nvim-surround").setup()
-        require("ibl").setup()
-        require("oil").setup()
-        EOF
-      ''
-    ];
+    extraConfig = lib.strings.fileContents ./neovim/extraConfig.vim;
 
     plugins = with pkgs.vimPlugins; [
-      # Config
+      # config
       configuration
 
-      # Colorscheme and icons
+      # colorscheme, icons, airline
       gruvbox
       # catppuccin-nvim
-      nvim-web-devicons
-
-      # airline
-      vim-airline
+      # nvim-web-devicons
+      {
+        plugin = vim-airline;
+        config = "let g:airline_powerline_fonts = 1";
+      }
       vim-airline-themes
 
-      # File organization
+      # file organization
       {
         plugin = fzf-lua;
         type = "lua";
         config = builtins.readFile(./neovim/plugin_configs/fzf.lua);
       }
-      oil-nvim
+      {
+        plugin = oil-nvim;
+        type = "lua";
+        config = "require('oil').setup()";
+      }
 
-      # Autocompletion coq
+      # autocompletion
       {
         plugin = coq_nvim;
         type = "lua";
@@ -54,21 +49,33 @@ in
       }
       coq-artifacts
 
-      # Codefolding and related visuals
+      # codefolding and related visuals
       {
         plugin = nvim-ufo;
         type = "lua";
         config = builtins.readFile(./neovim/plugin_configs/ufo.lua);
       }
-      indent-blankline-nvim
-
+      {
+        plugin = indent-blankline-nvim;
+        type = "lua";
+        config = "require('ibl').setup()";
+      }
+      
       # editing
-      nvim-surround
+      {
+        plugin = nvim-surround;
+        type = "lua";
+        config = "require('nvim-surround').setup()";
+      }
       vim-commentary
 
       # git
       vim-fugitive
-      gitsigns-nvim
+      {
+        plugin = gitsigns-nvim;
+        type = "lua";
+        config = "require('gitsigns').setup()";
+      }
 
       # LSP
       lsp-colors-nvim
@@ -84,7 +91,7 @@ in
         config = ''require("actions-preview").setup {}'';
       }
 
-      # Language support
+      # language support
       {
         plugin = rust-tools-nvim;
         type = "lua";

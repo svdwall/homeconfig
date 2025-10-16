@@ -6,9 +6,14 @@ set nocompatible
 set spell spelllang=en_us
 
 " theme
+set termguicolors
 colorscheme gruvbox
-let g:airline_theme = 'gruvbox'
-let g:airline_powerline_fonts = 1
+
+" Fixes Airline gruvbox colors
+" https://github.com/gruvbox-community/gruvbox/issues/200#issuecomment-2869162757
+hi statusline cterm=NONE gui=NONE
+hi tabline cterm=NONE gui=NONE
+hi winbar cterm=NONE gui=NONE
 
 " linenumbers, line highlight, and scrolloff
 set number

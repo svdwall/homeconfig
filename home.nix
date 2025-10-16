@@ -4,32 +4,22 @@ with pkgs;
 let
   mytexlive = callPackage ./texlive.nix {};
   scripts = callPackage ./scripts.nix {};
-  meslo = nerdfonts.override { fonts = [ "Meslo"]; };
-in {
+  # Until my PR is live:
+  teams = callPackage ./teams.nix {};
+in 
+{
   imports = [ ./zsh.nix ./neovim.nix ];
 
   # Make physical copies of applications so that spotlight finds them (since it does not follow symlinks)
   # https://github.com/nix-community/home-manager/issues/1341#issuecomment-778820334
-  home.activation = {
-    copyApplications = let
-      apps = pkgs.buildEnv {
+  home.file."Applications/home-manager".source =
+    let
+      apps = buildEnv {
         name = "home-manager-applications";
         paths = config.home.packages;
         pathsToLink = "/Applications";
       };
-    in lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      baseDir="$HOME/Applications/Home Manager Copied Apps"
-      if [ -d "$baseDir" ]; then
-        rm -rf "$baseDir"
-      fi
-      mkdir -p "$baseDir"
-      for appFile in ${apps}/Applications/*; do
-        target="$baseDir/$(basename "$appFile")"
-        $DRY_RUN_CMD cp ''${VERBOSE_ARG:+-v} -fHRL "$appFile" "$baseDir"
-        $DRY_RUN_CMD chmod ''${VERBOSE_ARG:+-v} -R +w "$target"
-      done
-    '';
-  };
+    in lib.mkIf pkgs.stdenv.targetPlatform.isDarwin "${apps}/Applications";
 
   fonts.fontconfig.enable = true;
 
@@ -39,7 +29,7 @@ in {
     comma
 
     # fonts
-    meslo
+    nerd-fonts.meslo-lg
     myriadpro
     jetbrains-mono
 
@@ -54,20 +44,21 @@ in {
 
     # communication
     zulip-term
-    # built is broken somehow
-    # teams
+    teams
 
-    # TeX
+    # TeX + research
     mytexlive
     scripts
     ghostscript
     sioyek
+    zotero
 
     # LSPs 
     ccls
     rust-analyzer
     texlab
-    coqPackages.coq-lsp
+    # This moved somehow?
+    # coqPackages.coq-lsp
     ltex-ls
     vscode-langservers-extracted
     pyright
