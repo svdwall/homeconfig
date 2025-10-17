@@ -1,8 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  # The folder contains the expected `~/.config/nvim/` structure
-  # This structure is the same for plugins.
-  # I therefore just load this folder as plugin.
+  # load general config and ft-plugins the same as any plugin
   configuration = pkgs.vimUtils.buildVimPlugin {
     pname = "configuration";
     version = "1.0.0";
@@ -13,7 +11,6 @@ in
   programs.neovim = {
     enable = true;
     vimAlias = true;
-    extraConfig = lib.strings.fileContents ./neovim/extraConfig.vim;
 
     plugins = with pkgs.vimPlugins; [
       # config

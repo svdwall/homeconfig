@@ -9,9 +9,11 @@
     history = {
       path = "${config.xdg.dataHome}/zsh/history";
       ignoreAllDups = true;
+      findNoDups = true;
       save = 10000;
       size = 10000;
       append = true;
+      share = true;
     };
 
 
@@ -24,18 +26,8 @@
       . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
       fi
       export NIX_PATH=''${NIX_PATH:+$NIX_PATH:}$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels
-
-      AGKOZAK_LEFT_PROMPT_ONLY=1
-      AGKOZAK_CMD_EXEC_TIME=5
-      AGKOZAK_COLORS_CMD_EXEC_TIME='yellow'
-      AGKOZAK_COLORS_PROMPT_CHAR='magenta'
-      AGKOZAK_CUSTOM_SYMBOLS=( '⇣⇡' '⇣' '⇡' '+' 'x' '!' '>' '?' )
-      AGKOZAK_MULTILINE=0
-      AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
-
-      setopt SHARE_HISTORY
-      setopt HIST_FIND_NO_DUPS
-    '';
+    ''
+    + builtins.readFile(./zsh/agkozak-config.zsh);
 
     envExtra = ''
       export PATH=/Applications/Skim.app/Contents/SharedSupport/:$PATH

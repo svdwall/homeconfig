@@ -8,7 +8,6 @@ set spell spelllang=en_us
 " theme
 set termguicolors
 
-
 " linenumbers, line highlight, and scrolloff
 set number
 set relativenumber
