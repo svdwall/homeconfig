@@ -1,5 +1,3 @@
-let mapleader = "\<Space>"
-
 set nocompatible
 
 " spell checking english by default

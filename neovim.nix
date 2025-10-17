@@ -12,6 +12,9 @@ in
     enable = true;
     vimAlias = true;
 
+    # leader needs to be set before plugins
+    extraConfig = ''let mapleader = "\<Space>"'';
+
     plugins = with pkgs.vimPlugins; [
       # config
       configuration
