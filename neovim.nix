@@ -44,6 +44,7 @@ in
       }
 
       # autocompletion
+      (nvim-treesitter.withAllGrammars)
       {
         plugin = coq_nvim;
         type = "lua";

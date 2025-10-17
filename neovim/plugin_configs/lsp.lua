@@ -1,13 +1,4 @@
--- lspconfig
--- updates while typing
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    update_in_insert = true,
-  }
-)
-
-
-local nvim_lsp = require('lspconfig')
+-- key mappings for lsp
 local def_keys = function(ev)
     local bufnr = ev.buf
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -43,15 +34,20 @@ local def_keys = function(ev)
     end
 end
 
+-- employ keymaps upon lsp attach
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
     callback = def_keys,
 })
 
-local servers = {
-    "ccls", "rust_analyzer"
-}
+-- updates while typing
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    update_in_insert = true,
+  }
+)
 
+-- use coq for talking to the lsp
 local coq = require('coq')
 local setup_server = function(lsp, settings) 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -61,12 +57,11 @@ local setup_server = function(lsp, settings)
         lineFoldingOnly = true
     }
     settings.capabilities = capabilities
-    nvim_lsp[lsp].setup ( 
-        --coq.lsp_ensure_capabilities(settings)
-        settings
-    )
+    vim.lsp.config(lsp, coq.lsp_ensure_capabilities(settings))
+    vim.lsp.enable(lsp)
 end
 
+-- setup servers
 setup_server("ccls", {})
 setup_server("texlab", {
     cmd = {"texlab"},
@@ -84,8 +79,7 @@ setup_server("texlab", {
         rootDirectory = "."
     },
 })
--- uncomment when new version of lspconfig comes: setup_server("coq-lsp", {})
-
 setup_server("ltex", {})
 setup_server("html", {})
 setup_server("pyright", {})
+setup_server("nixd", {})
