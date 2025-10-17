@@ -20,9 +20,11 @@ in
       configuration
 
       # colorscheme, icons, airline
-      gruvbox
-      # catppuccin-nvim
-      # nvim-web-devicons
+      {
+        plugin = gruvbox;
+        config = builtins.readFile(./neovim/plugin_configs/gruvbox.vim);
+      }
+      nvim-web-devicons
       {
         plugin = vim-airline;
         config = "let g:airline_powerline_fonts = 1";

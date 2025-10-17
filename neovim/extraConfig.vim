@@ -7,13 +7,7 @@ set spell spelllang=en_us
 
 " theme
 set termguicolors
-colorscheme gruvbox
 
-" Fixes Airline gruvbox colors
-" https://github.com/gruvbox-community/gruvbox/issues/200#issuecomment-2869162757
-hi statusline cterm=NONE gui=NONE
-hi tabline cterm=NONE gui=NONE
-hi winbar cterm=NONE gui=NONE
 
 " linenumbers, line highlight, and scrolloff
 set number
