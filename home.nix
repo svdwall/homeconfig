@@ -6,7 +6,7 @@ let
   scripts = callPackage ./scripts.nix {};
   # Until my PR is live:
   teams = callPackage ./teams.nix {};
-in 
+in
 {
   imports = [ ./zsh.nix ./neovim.nix ];
 
@@ -23,7 +23,7 @@ in
 
   fonts.fontconfig.enable = true;
 
-  home.packages = [ 
+  home.packages = [
     # nix + nix tools
     config.nix.package
     comma
@@ -43,7 +43,6 @@ in
     git
 
     # communication
-    zulip-term
     teams
 
     # TeX + research
@@ -62,6 +61,7 @@ in
     ltex-ls
     vscode-langservers-extracted
     pyright
+    nixd
 
     # Display related
     rectangle

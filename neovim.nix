@@ -27,9 +27,14 @@ in
       nvim-web-devicons
       {
         plugin = vim-airline;
-        config = "let g:airline_powerline_fonts = 1";
+        config = builtins.readFile(./neovim/plugin_configs/airline.vim);
       }
       vim-airline-themes
+      {
+        plugin = bufferline-nvim;
+        type = "lua";
+        config = builtins.readFile(./neovim/plugin_configs/bufferline.lua);
+      }
 
       # file organization
       {
