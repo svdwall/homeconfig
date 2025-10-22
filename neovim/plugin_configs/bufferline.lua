@@ -18,10 +18,9 @@ require("bufferline").setup({
 -- Function to check if Oil is the only buffer
 local function toggle_bufferline()
   local buffers = vim.tbl_filter(function(buf)
-    return vim.bo[buf].buflisted
+    return vim.bo[buf].buflisted and vim.bo[buf].filetype ~= "oil"
   end, vim.api.nvim_list_bufs())
-  
-  if #buffers == 1 and vim.bo[buffers[1]].filetype == "oil" then
+  if #buffers == 0 then
     vim.opt.showtabline = 0
   else
     vim.opt.showtabline = 2
