@@ -22,30 +22,30 @@ in
       # colorscheme, icons, airline
       {
         plugin = gruvbox;
-        config = builtins.readFile(./neovim/plugin_configs/gruvbox.vim);
+        config = builtins.readFile ./neovim/plugin_configs/gruvbox.vim;
       }
       nvim-web-devicons
       {
         plugin = vim-airline;
-        config = builtins.readFile(./neovim/plugin_configs/airline.vim);
+        config = builtins.readFile ./neovim/plugin_configs/airline.vim;
       }
       vim-airline-themes
       {
         plugin = bufferline-nvim;
         type = "lua";
-        config = builtins.readFile(./neovim/plugin_configs/bufferline.lua);
+        config = builtins.readFile ./neovim/plugin_configs/bufferline.lua;
       }
 
       # file organization
       {
         plugin = fzf-lua;
         type = "lua";
-        config = builtins.readFile(./neovim/plugin_configs/fzf.lua);
+        config = builtins.readFile ./neovim/plugin_configs/fzf.lua;
       }
       {
         plugin = oil-nvim;
         type = "lua";
-        config = "require('oil').setup()";
+        config = builtins.readFile ./neovim/plugin_configs/oil.lua;
       }
 
       # autocompletion
@@ -53,7 +53,7 @@ in
       {
         plugin = coq_nvim;
         type = "lua";
-        config = builtins.readFile(./neovim/plugin_configs/coq.lua);
+        config = builtins.readFile ./neovim/plugin_configs/coq.lua;
       }
       coq-artifacts
 
@@ -61,7 +61,7 @@ in
       {
         plugin = nvim-ufo;
         type = "lua";
-        config = builtins.readFile(./neovim/plugin_configs/ufo.lua);
+        config = builtins.readFile ./neovim/plugin_configs/ufo.lua;
       }
       {
         plugin = indent-blankline-nvim;
@@ -90,7 +90,7 @@ in
       {
         plugin = nvim-lspconfig;
         type = "lua";
-        config = builtins.readFile(./neovim/plugin_configs/lsp.lua);
+        config = builtins.readFile ./neovim/plugin_configs/lsp.lua;
       }
       trouble-nvim
       {
@@ -103,14 +103,14 @@ in
       {
         plugin = rust-tools-nvim;
         type = "lua";
-        config = builtins.readFile(./neovim/plugin_configs/rust-tools.lua);
+        config = builtins.readFile ./neovim/plugin_configs/rust-tools.lua;
       }
       vim-nix
       vim-ccls
       Coqtail
       {
         plugin = vimtex;
-        config = builtins.readFile(./neovim/plugin_configs/vimtex.vim);
+        config = builtins.readFile ./neovim/plugin_configs/vimtex.vim;
       }
     ];
   };

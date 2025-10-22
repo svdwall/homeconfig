@@ -14,3 +14,21 @@ require("bufferline").setup({
         end,
     }
 })
+
+-- Function to check if Oil is the only buffer
+local function toggle_bufferline()
+  local buffers = vim.tbl_filter(function(buf)
+    return vim.bo[buf].buflisted
+  end, vim.api.nvim_list_bufs())
+  
+  if #buffers == 1 and vim.bo[buffers[1]].filetype == "oil" then
+    vim.opt.showtabline = 0
+  else
+    vim.opt.showtabline = 2
+  end
+end
+
+-- Autocommand to trigger when buffers are entered or changed
+vim.api.nvim_create_autocmd({"BufEnter", "BufLeave"}, {
+  callback = toggle_bufferline,
+})
