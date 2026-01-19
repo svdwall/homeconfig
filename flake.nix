@@ -2,18 +2,22 @@
   description = "My little Home-Manager flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+    nixpkgs-bu.url = "github:NixOS/nixpkgs/nixpkgs-24.05-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
     homeManager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Needs the local sources that I cannot put on github.
     home-sources.url = "git+file:/Users/soren/.config/home-config-sources?rev=b28a3e3a1308f523fad85b82aaac266c8e9332f5";
   };
 
-  outputs = { self, nixpkgs, homeManager, flake-utils, home-sources }:
+  outputs = { self, nixpkgs, nixpkgs-bu, homeManager, flake-utils, home-sources }:
   let
-    pkgs = import nixpkgs { system = "aarch64-darwin"; overlays = [ home-sources.overlay ]; config.allowUnfree = true; config.allowUnfreePredicate = _ : true; };
+    pkgs-bu = nixpkgs-bu.legacyPackages.aarch64-darwin;
+    # inkscape crashes on startup in 25.11 for me
+    inkscape-overlay = final: prev: { inkscape = pkgs-bu.inkscape; };
+    pkgs = import nixpkgs { system = "aarch64-darwin"; overlays = [ home-sources.overlay inkscape-overlay ]; config.allowUnfree = true; config.allowUnfreePredicate = _ : true; };
   in
   {
     templates = import ./templates.nix { lib = pkgs.lib; };

@@ -100,11 +100,6 @@ in
       }
 
       # language support
-      {
-        plugin = rust-tools-nvim;
-        type = "lua";
-        config = builtins.readFile ./neovim/plugin_configs/rust-tools.lua;
-      }
       vim-nix
       vim-ccls
       Coqtail

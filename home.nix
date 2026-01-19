@@ -7,28 +7,33 @@ let
   # Until my PR is live:
   teams = callPackage ./teams.nix {};
 in
-{
-  imports = [ ./zsh.nix ./neovim.nix ];
+  {
+    imports = [ ./zsh.nix ./neovim.nix ];
 
-  # Make physical copies of applications so that spotlight finds them (since it does not follow symlinks)
-  # https://github.com/nix-community/home-manager/issues/1341#issuecomment-778820334
-  home.file."Applications/home-manager".source =
-    let
-      apps = buildEnv {
-        name = "home-manager-applications";
-        paths = config.home.packages;
-        pathsToLink = "/Applications";
-      };
-    in lib.mkIf pkgs.stdenv.targetPlatform.isDarwin "${apps}/Applications";
+    # Make physical copies of applications so that spotlight finds them (since it does not follow symlinks)
+    # https://github.com/nix-community/home-manager/issues/1341#issuecomment-778820334
+    targets.darwin.copyApps.enable = true;
+    targets.darwin.linkApps.enable = false;
 
-  fonts.fontconfig.enable = true;
+    fonts.fontconfig.enable = true;
+    xdg.configFile."fontconfig/conf.d/50-macos-fonts.conf".text = ''
+      <?xml version="1.0"?>
+      <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+      <fontconfig>
+      <dir>/System/Library/Fonts</dir>
+      <dir>/Library/Fonts</dir>
+      <dir>~/.Library/Fonts</dir>
+      <dir>/System/Library/AssetsV2</dir>
+      </fontconfig>
+    '';
 
-  home.packages = [
+    home.packages = [
     # nix + nix tools
     config.nix.package
     comma
 
     # fonts
+    fontconfig
     nerd-fonts.meslo-lg
     myriadpro
     jetbrains-mono
@@ -43,7 +48,11 @@ in
     git
 
     # communication
-    teams
+    discord
+    # teams
+
+    adwaita-icon-theme
+    inkscape
 
     # TeX + research
     mytexlive
